@@ -1,0 +1,14 @@
+{
+  "name": "shoppinglistapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "author": "conrad",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^7.1.4"
+  }
+}
