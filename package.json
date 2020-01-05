@@ -9,6 +9,7 @@
   "author": "conrad",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "electron": "^7.1.4"
   }
 }
