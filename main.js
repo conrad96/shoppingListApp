@@ -13,13 +13,31 @@ function mainWindow(){
 }
 //listen for app to be ready
 app.on('ready', mainWindow);
+//new window functions
+function addItemWindow(){
+    addItemWindow = new BrowserWindow({
+        width: 500,
+        height: 165,
+        title: 'Add Shopping List Item',
+        parent: window,
+        autoHideMenuBar: true       
+    });
+    addItemWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'addItem.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+}
 //create menu
 const menu = [
     {
         label: 'File',
         submenu: [
             {
-                label: 'Add Item'
+                label: 'Add Item',
+                click: ()=>{
+                    addItemWindow()
+                }
             },
             {
                 label: 'Clear Items'
