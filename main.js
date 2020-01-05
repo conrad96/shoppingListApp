@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, Menu} = require('electron');
 const url = require('url');
 const path = require('path');
 
@@ -13,6 +13,29 @@ function mainWindow(){
 }
 //listen for app to be ready
 app.on('ready', mainWindow);
+//create menu
+const menu = [
+    {
+        label: 'File',
+        submenu: [
+            {
+                label: 'Add Item'
+            },
+            {
+                label: 'Clear Items'
+            },
+            {
+                label: 'Quit',
+                click: ()=> {
+                    app.quit()
+                }
+            },
+        ]
+    }
+];
+
+const mainMenu = Menu.buildFromTemplate(menu)
+Menu.setApplicationMenu(mainMenu);
 //close when all windows are closed
 app.on('window-all-closed', ()=>{
     window = null;
