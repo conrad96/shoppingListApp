@@ -13,8 +13,10 @@ function mainWindow(){
         slashes: true
     }));    
     //use the webcontents api to send ipc message
-    window.webContents.send('get-items', getItems());
-
+    window.webContents.on('did-finish-load', ()=>{
+        window.webContents.send('get-items', getItems());
+    })
+    
     //open dev tools
     window.webContents.openDevTools();
 }
