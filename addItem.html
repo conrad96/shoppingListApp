@@ -21,4 +21,22 @@
         </form>        
     </div>
 </body>
+<script>
+    const ipcRenderer = require('electron');
+    const addItemForm = document.getElementById("addItemForm");
+    require('.dataStore');
+
+    addItemForm.addEventListener('submit', (event)=>{
+        event.preventDefault();
+        const item = document.getElementById("item").value;
+        const shoppingListItem = {
+            id: Date.now().toString(),
+            item: item,
+            checked: false
+        }
+        
+        //send message to main process to update list
+        ipcRenderer.send('add-item', shoppingListItem);
+    });
+</script>
 </html>

@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "scripts": {    
+  "scripts": {
     "start": "electron ."
   },
   "author": "conrad",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "electron": "^7.1.4"
+    "electron": "^7.1.4",
+    "electron-store": "^5.1.0"
   }
 }
