@@ -13,9 +13,9 @@ function mainWindow(){
         slashes: true
     }));    
     //use the webcontents api to send ipc message
-    window.webContents.on('did-finish-load', ()=>{
+    window.webContents.once('did-finish-load', ()=>{        
         window.webContents.send('get-items', getItems());
-    })
+    });
     
     //open dev tools
     window.webContents.openDevTools();
@@ -29,20 +29,23 @@ function addItemWindow(){
         height: 165,
         title: 'Add Shopping List Item',
         parent: window,
-        autoHideMenuBar: true       
+        autoHideMenuBar: true ,
+        webPreferences : {nodeIntegration: true }      
     });
     addItemWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'addItem.html'),
         protocol: 'file:',
         slashes: true
     }));
+    addItemWindow.webContents.openDevTools();
 }
 
 //IPC MAIN listen to channels
 ipcMain.on('add-item', (event, item)=>{
     //add new item to list
-    addItem(item);
-    window.send('get-items', getItems());
+    addItem(item);    
+    //fetch new list
+    //window.send('get-items', getItems());
 });
 
 //create menu

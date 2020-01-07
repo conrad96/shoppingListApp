@@ -22,9 +22,9 @@
     </div>
 </body>
 <script>
-    const ipcRenderer = require('electron');
+    const {ipcRenderer} = require('electron');
     const addItemForm = document.getElementById("addItemForm");
-    require('.dataStore');
+    require('./dataStore');
 
     addItemForm.addEventListener('submit', (event)=>{
         event.preventDefault();
@@ -36,7 +36,9 @@
         }
         
         //send message to main process to update list
-        ipcRenderer.send('add-item', shoppingListItem);
+        ipcRenderer.send('add-item', shoppingListItem);   
+        //reset form
+        addItemForm.reset();     
     });
 </script>
 </html>
